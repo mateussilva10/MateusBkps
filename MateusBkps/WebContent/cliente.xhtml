@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <title>Gerencia Cliente</title>
+    <style>
+#bordas {
+    background-color: #F8F8FC;
+}
+</style>
+</h:head>
+<h:body>
+    <div id="bordas">
+        <b:navBar inverse="true" fixed="top">
+            <b:navbarLinks>
+                <b:navLink value="Lista de Clientes" href="cliente.xhtml"></b:navLink>
+                <b:navLink value="Gerenciar Cliente" href="manageCliente.xhtml"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
+        <br /> <br /> <br /><hr/>
+        <b:container>
+            <h2>
+                <h:outputText value="Gerenciar Cliente" />
+            </h2>
+            <h:form>
+                <p:button value="Novo Cliente" href="manageCliente.xhtml" />
+            </h:form>
+            <br />
+            <br />
+            <h:form>
+                <p:dataTable id="tbl" var="cliente" value="#{clienteBean.clienteList}"
+                    paginator="true" rows="5" style="margin-bottom:20px">
+                    <f:facet name="{Exporters}">
+                    </f:facet>
+                    <p:column headerText="Codigo do cliente">
+                        <h:outputText value="#{cliente.id}" />
+                    </p:column>
+                    <p:column headerText="Nome do Cliente">
+                        <h:outputText value="#{cliente.nome}" />
+                    </p:column>
+                    <p:column headerText="CPF do cliente">
+                        <h:outputText value="#{cliente.cpf}" />
+                    </p:column>
+                    <p:column headerText="Editar">
+                        <p:commandButton action="#{clienteBean.edit(cliente)}" value="Editar" />
+                    </p:column>
+                    <p:column headerText="Deletar">
+                        <h:commandLink action="#{clienteBean.delete(cliente)}" value="Excluir" />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+            <br />
+            <br />
+            <br />
+            <br />
+        </b:container>
+    </div>
+</h:body>
+</html>

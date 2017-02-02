@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <title>Gerencia Cliente</title>
+    <style>
+#rodape {
+    background-color: #167A89;
+    color: #F7FBFC;
+}
+
+</style>
+</h:head>
+<h:body>
+    <div id="bordas">
+        <b:container>
+            <b:navBar inverse="true" fixed="top">
+                <b:navbarLinks>
+                    <b:navLink value="Lista de Clientes" href="cliente.xhtml"></b:navLink>
+                    <b:navLink value="Gerenciar Clientes" href="manageCliente.xhtml"></b:navLink>
+                </b:navbarLinks>
+            </b:navBar>
+            <br />
+            <hr />
+            <br />
+            <br />
+            <br />
+            <h1>
+                <h:outputText value="Gerenciar Cliente" />
+            </h1>
+            <br />
+            <br />
+            <h:form>
+                <p:panel id="panel" header="Adicionar cliente">
+
+                    <h:panelGrid columns="3" cellpadding="5">
+                        <p:outputLabel value="nome" />
+                        <p:inputText id="nome" value="#{clienteBean.cliente.nome}"
+                            label="nome">
+                        </p:inputText>
+                        <br />
+
+                        <p:outputLabel value="cpf" />
+                        <p:inputText id="cpf" value="#{clienteBean.cliente.cpf}"
+                            label="cpf">
+                        </p:inputText>
+                        <br />
+                    </h:panelGrid>
+                    <p:commandButton value="Salvar" 
+                        action="#{clienteBean.save}" />
+                </p:panel>
+            </h:form>
+            
+        </b:container>
+    </div>
+</h:body>
+</html> 
